@@ -1,10 +1,6 @@
-package factionsplanning
+package types
 
-import (
-	"github.com/pborman/uuid"
-
-	"fmt"
-)
+import "fmt"
 
 // Implements FoodSource
 type VegetableGarden struct {

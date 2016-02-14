@@ -1,9 +1,7 @@
-package factionsplanning
+package types
 
 import (
 	"github.com/pborman/uuid"
-
-	"fmt"
 )
 
 type Survivor struct {
