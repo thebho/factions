@@ -15,7 +15,7 @@ func main() {
 	garden.AddSurvivor(*survivor)
 	garden.GatherFood(faction)
 	fmt.Println(faction.TotalFood)
-	fmt.Printf("Faction: %+v\n", faction)
+	fmt.Printf("Faction: %+v\n", faction.Members)
 	fmt.Printf("Garden: %+v\n", garden)
 	fmt.Printf("Survivor: %+v\n", survivor)
 
