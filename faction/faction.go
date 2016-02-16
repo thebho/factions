@@ -1,4 +1,4 @@
-package types
+package faction
 
 import (
 	"github.com/pborman/uuid"

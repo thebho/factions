@@ -1,6 +1,8 @@
-package types
+package faction
 
-import "fmt"
+import (
+	"fmt"
+)
 
 // Implements FoodSource
 type VegetableGarden struct {
@@ -15,9 +17,8 @@ func NewVegetableGarden(name string) *VegetableGarden {
 	return garden
 }
 
-func (v *VegetableGarden) AddSurvivor(survivor Survivor) {
-	fmt.Printf("Adding Survivor: %s\n", survivor.FirstName)
-	v.Survivors = append(v.Survivors, survivor.Key)
+func (v *VegetableGarden) AddSurvivor(survivor string) {
+	v.Survivors = append(v.Survivors, survivor)
 }
 
 func (v *VegetableGarden) GatherFood(faction *Faction) {

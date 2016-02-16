@@ -1,8 +1,8 @@
-package types
+package faction
 
 type FoodSource interface {
 	GatherFood(*Faction) //Number of survivors
-	AddSurvivor(Survivor)
+	AddSurvivor(string)
 }
 
 type FoodSourceStats struct {

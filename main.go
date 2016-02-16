@@ -1,21 +1,22 @@
 package main
 
 import (
-	"factions/types"
+	"factions/faction"
+	"factions/survivor"
 	"fmt"
 )
 
 func main() {
-	survivor := types.NewSurvivor("Brian", "Hoehne")
-	faction := types.NewFaction("Test Faction")
-	faction.Leader = "LeaderKey"
-	faction.Members = []string{"LeaderKey", "Other Member"}
-	garden := types.NewVegetableGarden("Test Garden")
-	faction.FoodSources = append(faction.FoodSources, garden)
-	garden.AddSurvivor(*survivor)
-	garden.GatherFood(faction)
-	fmt.Println(faction.TotalFood)
-	fmt.Printf("Faction: %+v\n", faction.Members)
+	survivor := survivor.CreateRandomSurivor()
+	newFaction := faction.NewFaction("Test Faction")
+	newFaction.Leader = "LeaderKey"
+	newFaction.Members = []string{"LeaderKey", "Other Member"}
+	garden := faction.NewVegetableGarden("Test Garden")
+	newFaction.FoodSources = append(newFaction.FoodSources, garden)
+	garden.AddSurvivor(survivor.Key)
+	garden.GatherFood(newFaction)
+	fmt.Println(newFaction.TotalFood)
+	fmt.Printf("Faction: %+v\n", newFaction.Members)
 	fmt.Printf("Garden: %+v\n", garden)
 	fmt.Printf("Survivor: %+v\n", survivor)
 
