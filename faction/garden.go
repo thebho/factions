@@ -22,6 +22,7 @@ func (v *VegetableGarden) AddSurvivor(survivor string) {
 }
 
 func (v *VegetableGarden) GatherFood(faction *Faction) {
-	fmt.Printf("Harvesting %d food.  Faction total food: %d \n", v.HarvestPerDay*len(v.Survivors), faction.TotalFood)
-	faction.TotalFood += v.HarvestPerDay * len(v.Survivors)
+	foodGathered := v.CalculateFoodGathered()
+	faction.TotalFood += foodGathered
+	fmt.Printf("Harvesting %d food.  Faction total food: %d \n", foodGathered, faction.TotalFood)
 }
