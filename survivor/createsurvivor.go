@@ -15,7 +15,7 @@ func CreateRandomSurivor() *AISurvivor {
 	s, i, l, f, h := generateRandomSurvivorStats()
 	randomSurvivor.AddSurvivorStats(s, i, l, f, h)
 
-	fmt.Printf("Returning New Random Survivor: %v", randomSurvivor)
+	fmt.Printf("Returning New Random Survivor: %v\n", randomSurvivor)
 	return randomSurvivor
 }
 

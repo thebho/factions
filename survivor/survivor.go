@@ -1,7 +1,17 @@
 package survivor
 
 import (
+	"fmt"
+
 	"github.com/pborman/uuid"
+)
+
+const (
+	SUR_STR = iota
+	SUR_INT
+	SUR_LEAD
+	SUR_FARM
+	SUR_HUNT
 )
 
 // Survivor
@@ -74,4 +84,34 @@ func (s *Survivor) AddSurvivorStats(str, intel, leader, farm, hunt int) {
 	s.leadership = leader
 	s.farming = farm
 	s.hunting = hunt
+}
+
+func (s *Survivor) GetStat(statType int) int {
+	switch statType {
+	case SUR_STR:
+		return s.strength
+	case SUR_INT:
+		return s.intelligence
+	case SUR_LEAD:
+		return s.leadership
+	case SUR_HUNT:
+		return s.hunting
+	default:
+		panic(fmt.Errorf("statType: %d not suported\n", statType))
+	}
+}
+
+func (s *Survivor) AdjustStat(statType, valueChange int) {
+	switch statType {
+	case SUR_STR:
+		s.strength += valueChange
+	case SUR_INT:
+		s.intelligence += valueChange
+	case SUR_LEAD:
+		s.leadership += valueChange
+	case SUR_HUNT:
+		s.hunting += valueChange
+	default:
+		panic(fmt.Errorf("statType: %d not suported\n", statType))
+	}
 }
