@@ -1,6 +1,7 @@
 package survivor
 
 import (
+	rand "factions/random"
 	"fmt"
 )
 
@@ -19,21 +20,20 @@ func CreateRandomSurivor() *AISurvivor {
 	return randomSurvivor
 }
 
-// TODO: Randomize name/sex generator
+// TODO: Randomize names
 func generateRandomNameAndSex() (string, string, string) {
 	fmt.Println("Generating Random Name/Sex")
 	// Will return random generated name
-	return "Random First", "Random Last", "(fe)male"
+	return "Random First", "Random Last", sex[rand.RandIndex(2)]
 }
 
-//TODO: Randomize Alignment
 func generateRandomAlignment() (string, string) {
 	fmt.Println("Generating Random Alignment Stats")
-	return "Neutral", "Neutral"
+	return alignment[rand.RandIndex(len(alignment))], lawalignment[rand.RandIndex(len(lawalignment))]
 }
 
 //TODO: Randomize SurvivorStats
 func generateRandomSurvivorStats() (int, int, int, int, int) {
 	fmt.Println("Generating Random Survivor Stats")
-	return 1, 2, 3, 4, 5
+	return rand.RandInt(99), rand.RandInt(99), rand.RandInt(99), rand.RandInt(99), rand.RandInt(99)
 }
