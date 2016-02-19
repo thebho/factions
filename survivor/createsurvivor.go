@@ -20,11 +20,19 @@ func CreateRandomSurivor() *AISurvivor {
 	return randomSurvivor
 }
 
-// TODO: Randomize names
 func generateRandomNameAndSex() (string, string, string) {
 	fmt.Println("Generating Random Name/Sex")
 	// Will return random generated name
-	return "Random First", "Random Last", sex[rand.RandIndex(2)]
+	sexInt := rand.RandIndex(2)
+	fmt.Println(sexInt)
+	var first string
+	if sexInt == 0 {
+		first = male[rand.RandIndex(len(male))]
+	} else {
+		first = female[rand.RandIndex(len(male))]
+	}
+	last := surname[rand.RandIndex(len(surname))]
+	return first, last, sex[sexInt]
 }
 
 func generateRandomAlignment() (string, string) {
@@ -32,7 +40,6 @@ func generateRandomAlignment() (string, string) {
 	return alignment[rand.RandIndex(len(alignment))], lawalignment[rand.RandIndex(len(lawalignment))]
 }
 
-//TODO: Randomize SurvivorStats
 func generateRandomSurvivorStats() (int, int, int, int, int) {
 	fmt.Println("Generating Random Survivor Stats")
 	return rand.RandInt(99), rand.RandInt(99), rand.RandInt(99), rand.RandInt(99), rand.RandInt(99)
