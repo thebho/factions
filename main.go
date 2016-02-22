@@ -1,6 +1,7 @@
 package main
 
 import (
+	"factions/data"
 	"factions/faction"
 	"factions/random"
 	"factions/survivor"
@@ -8,7 +9,13 @@ import (
 )
 
 func main() {
-	testFactions()
+	db, err := data.ConnectToDatabase()
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println("Connected to Database")
+	defer db.Close()
+	// testFactions()
 	// testRandom()
 
 }
