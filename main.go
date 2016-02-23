@@ -15,12 +15,14 @@ func main() {
 	}
 	fmt.Println("Connected to Database")
 	defer db.Close()
-	// testFactions()
+	data.DeleteTable(db)
+	data.InitializeSurvivor(db)
+	// testFactions(db)
 	// testRandom()
 
 }
 
-func testFactions() {
+func testFactions(db *data.DB) {
 	for i := 0; i < 10; i++ {
 		newSurvivor := survivor.CreateRandomSurivor()
 		newFaction := faction.NewFaction("Test Faction")

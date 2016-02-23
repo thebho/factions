@@ -11,18 +11,24 @@ const (
 	Survivor = "survivor"
 )
 
+type DB struct {
+	*sql.DB
+}
+
 // TODO: get the IP & Database Name from KV Store
 var (
 	tempServer   = "demo:demo@(127.0.0.1:3306)/"
 	tempDatabase = "factionsTemp"
 )
 
-func ConnectToDatabase() (*sql.DB, error) {
+func ConnectToDatabase() (*DB, error) {
 	fmt.Println("Connecting to database")
-	db, err := sql.Open("mysql", tempServer)
+	sqlDB, err := sql.Open("mysql", tempServer)
 	if err != nil {
 		return nil, err
 	}
+
+	db := &DB{sqlDB}
 
 	// Create new database dynamically
 	fmt.Println("Creating Database")
