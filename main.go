@@ -15,9 +15,13 @@ func main() {
 	}
 	fmt.Println("Connected to Database")
 	defer db.Close()
+	// data.DeleteTable(db)
 	data.DeleteTable(db)
+
 	data.InitializeSurvivor(db)
-	// testFactions(db)
+	testFactions(db)
+	data.DeleteAllRows(db)
+	data.DeleteTable(db)
 	// testRandom()
 
 }
@@ -25,6 +29,7 @@ func main() {
 func testFactions(db *data.DB) {
 	for i := 0; i < 10; i++ {
 		newSurvivor := survivor.CreateRandomSurivor()
+		data.AddNewSurvivor(db, newSurvivor)
 		newFaction := faction.NewFaction("Test Faction")
 		newFaction.Leader = "LeaderKey"
 		newFaction.Members = []string{"LeaderKey", "Other Member"}

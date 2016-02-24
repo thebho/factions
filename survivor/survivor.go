@@ -54,7 +54,6 @@ type aiStats struct {
 // NewSurvivor
 func NewSurvivor(firstName, lastName, sex string) *Survivor {
 	return &Survivor{
-		Key:       uuid.New(),
 		FirstName: firstName,
 		LastName:  lastName,
 		Sex:       sex,
