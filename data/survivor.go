@@ -63,5 +63,46 @@ func AddNewSurvivor(db *DB, survivor *survivor.AISurvivor) {
 	fmt.Printf("ID: %d\n", id)
 
 	fmt.Println("New Survivor Added")
+}
 
+func QuerySurvivor(db *DB) (*survivor.AISurvivor, error) {
+	fmt.Println("Querying Data")
+	rows, err := db.Query("select * from survivor")
+	if err != nil {
+		fmt.Printf("Query Err: %v\n", err)
+	}
+	defer rows.Close()
+	for rows.Next() {
+		var (
+			survivorKey string
+			firstName   string
+			lastName    string
+			faction     string
+			role        string
+			sex         string
+		)
+		err := rows.Scan(&survivorKey, &firstName, &lastName, &role, &faction, &sex)
+		if err != nil {
+			fmt.Printf("Scan Err: %v\n", err)
+			return nil, err
+		}
+		fmt.Printf("Name: %s Key: %s Sex: %s\n", firstName+lastName, survivorKey, sex)
+		fmt.Printf("Faction: %s Role: %s\n", faction, role)
+
+		survivor := &survivor.AISurvivor{}
+		survivor.Key = survivorKey
+		survivor.Type = "Survivor"
+		survivor.FirstName = firstName
+		survivor.LastName = lastName
+		survivor.Sex = sex
+		survivor.Faction = faction
+		survivor.Role = role
+		return survivor, nil
+	}
+	err = rows.Err()
+	if err != nil {
+		log.Printf("Rows err %s\n", err)
+		return nil, err
+	}
+	return nil, fmt.Errorf("Unknown err")
 }

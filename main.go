@@ -20,6 +20,12 @@ func main() {
 
 	data.InitializeSurvivor(db)
 	testFactions(db)
+	survivor, err := data.QuerySurvivor(db)
+	if err != nil {
+		fmt.Printf("Query: %v\n", err)
+	} else {
+		fmt.Printf("Survivor Query: %v", survivor)
+	}
 	data.DeleteAllRows(db)
 	data.DeleteTable(db)
 	// testRandom()
