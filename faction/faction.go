@@ -4,18 +4,20 @@ import (
 	"github.com/pborman/uuid"
 )
 
+//Faction describes
 type Faction struct {
-	Key     string
-	Name    string
-	Type    string
-	Leader  string   // Survivor key
+	ID      string   `db:"uid"`
+	Name    string   `db:"name"`
+	Type    string   `db:"type"`
+	Leader  string   `db:"leader"`
 	Members []string //Survivor Keys
 	FactionConsumeables
 }
 
+//NewFaction is a Faction contructor
 func NewFaction(name string) *Faction {
 	return &Faction{
-		Key:  uuid.New(),
+		ID:   uuid.New(),
 		Name: name,
 		Type: "Faction",
 	}
