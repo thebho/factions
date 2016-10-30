@@ -3,9 +3,10 @@ package main
 import (
 	"factions/data"
 	"factions/faction"
-	"factions/random"
 	"factions/survivor"
 	"fmt"
+
+	random "github.com/thebho/random-tools"
 )
 
 func main() {
@@ -33,7 +34,7 @@ func main() {
 }
 
 func testFactions(db *data.DB) {
-	for i := 0; i < 10; i++ {
+	for i := 0; i < 1; i++ {
 		newSurvivor := survivor.CreateRandomSurivor()
 		data.AddNewSurvivor(db, newSurvivor)
 		newFaction := faction.NewFaction("Test Faction")

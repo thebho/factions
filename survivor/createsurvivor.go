@@ -1,8 +1,9 @@
 package survivor
 
 import (
-	rand "factions/random"
 	"fmt"
+
+	rand "github.com/thebho/random-tools"
 )
 
 func CreateRandomSurivor() *AISurvivor {
